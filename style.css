@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: white;
+}
+
+.time h1 {
+    text-align: center;
+    font-size: 10rem;
+}
+
+.team {
+    display: flex;
+}
+
+.team>div {
+    padding: 30px;
+}
+
+.blue {
+    background: #2727ff;
+}
+
+.yellow {
+    background: #f1ff27;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+.team {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.name {
+    text-align: center;
+}
+
+.name input {
+    font-size: 7rem;
+    width: 90%;
+    text-align: center;
+}
+
+
+.point {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.point>div {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+}
+
+.up,
+.down {
+    padding: 20px;
+}
+
+.point h2 {
+    font-size: 8rem;
+}

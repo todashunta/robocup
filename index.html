@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body id="app">
+    <div class="time">
+        <h1>{{time}}</h1>
+    </div>
+    <div class="menu">
+        <div @click='start'>start</div>
+        <div @click='stop'>stop</div>
+    </div>
+    <div class="team">
+        <div class="blue">
+            <div class="name"><input type="text"></div>
+            <div class="point">
+                <h2>0</h2>
+                <div>
+                    <p class="up">+1</p>
+                    <p class="down">-1</p>
+                </div>
+            </div>
+        </div>
+        <div class="yellow">
+            <div class="name"><input type="text"></div>
+            <div class="point">
+                <h2>0</h2>
+                <div>
+                    <p class="up">+1</p>
+                    <p class="down">-1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js"></script>
+</body>
+</html>
