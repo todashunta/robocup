@@ -44,9 +44,11 @@ body {
 }
 
 .name input {
-    font-size: 7rem;
+    font-size: 4rem;
     width: 90%;
     text-align: center;
+    background: #ffffff00;
+    border: none;
 }
 
 

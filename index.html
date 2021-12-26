@@ -9,7 +9,7 @@
 </head>
 <body id="app">
     <div class="time">
-        <h1>{{time}}</h1>
+        <h1>{{timeText}}</h1>
     </div>
     <div class="menu">
         <div @click='start'>start</div>
@@ -17,7 +17,7 @@
     </div>
     <div class="team">
         <div class="blue">
-            <div class="name"><input type="text"></div>
+            <div class="name"><input type="text" value="チーム名"></div>
             <div class="point">
                 <h2>0</h2>
                 <div>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="yellow">
-            <div class="name"><input type="text"></div>
+            <div class="name"><input type="text" value="チーム名"></div>
             <div class="point">
                 <h2>0</h2>
                 <div>
@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="vue.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
