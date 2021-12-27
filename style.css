@@ -4,12 +4,29 @@
 }
 
 body {
-    background: white;
+    background: #e9e7e7;
 }
 
-.time h1 {
+.time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time>div {
+    position: relative;
+}
+
+.time>div>h1 {
     text-align: center;
     font-size: 10rem;
+    display: inline-block;
+}
+
+.time h2 {
+    position: absolute;
+    top: 20px;
+    left: -50px;
 }
 
 .team {
@@ -31,6 +48,14 @@ body {
 .menu {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+.menu>div {
+    padding: 5px 20px;
+    text-align: center;
+    background: white;
+    box-shadow: 2px 2px 3px black;
 }
 
 .team {
@@ -47,8 +72,10 @@ body {
     font-size: 4rem;
     width: 90%;
     text-align: center;
-    background: #ffffff00;
+    background: #ffffff;
     border: none;
+    color: black;
+    font-weight: bold;
 }
 
 
@@ -60,6 +87,11 @@ body {
     position: relative;
 }
 
+.point h2 {
+    color: white;
+    text-shadow: 3px 3px 7px black;
+}
+
 .point>div {
     display: flex;
     flex-direction: column;
@@ -69,7 +101,14 @@ body {
 
 .up,
 .down {
-    padding: 20px;
+    padding: 10px;
+    cursor: pointer;
+    background: white;
+    box-shadow: 2px 2px 5px black;
+}
+
+.up {
+    margin-bottom: 30px;
 }
 
 .point h2 {

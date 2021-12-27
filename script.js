@@ -8,6 +8,8 @@ const app = Vue.createApp({
             stopFlag: false,
             time: 0,
             timeText: '0:00',
+            bluePoint: 0,
+            yellowPoint: 0
         }
     },
     methods: {
@@ -30,10 +32,23 @@ const app = Vue.createApp({
             }
         },
         stop() {
-            this.
-            this.startFlag = false
-            this.stopFlag = true
-            this.stopTime = new Date().getTime()
+            if (this.startFlag) {
+                this.stopTime = new Date().getTime()
+                this.startFlag = false
+                this.stopFlag = true
+            }
+        },
+        blueUp() {
+            this.bluePoint += 1
+        },
+        blueDown() {
+            this.bluePoint -= 1
+        },
+        yellowUp() {
+            this.yellowPoint += 1
+        },
+        yellowDown() {
+            this.yellowPoint -= 1
         }
     },
 }).mount('#app')

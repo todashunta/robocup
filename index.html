@@ -9,30 +9,34 @@
 </head>
 <body id="app">
     <div class="time">
-        <h1>{{timeText}}</h1>
+        <div>
+            <h1>{{timeText}}</h1>
+            <h2>準備</h2>
+        </div>
     </div>
     <div class="menu">
         <div @click='start'>start</div>
         <div @click='stop'>stop</div>
+        <div>reset</div>
     </div>
     <div class="team">
         <div class="blue">
             <div class="name"><input type="text" value="チーム名"></div>
             <div class="point">
-                <h2>0</h2>
+                <h2>{{bluePoint}}</h2>
                 <div>
-                    <p class="up">+1</p>
-                    <p class="down">-1</p>
+                    <p class="up" @click="blueUp">+1</p>
+                    <p class="down" @click="blueDown">-1</p>
                 </div>
             </div>
         </div>
         <div class="yellow">
             <div class="name"><input type="text" value="チーム名"></div>
             <div class="point">
-                <h2>0</h2>
+                <h2>{{yellowPoint}}</h2>
                 <div>
-                    <p class="up">+1</p>
-                    <p class="down">-1</p>
+                    <p class="up" @click="yellowUp">+1</p>
+                    <p class="down" @click="yellowDown">-1</p>
                 </div>
             </div>
         </div>
