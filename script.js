@@ -1,4 +1,3 @@
-const date = new Date()
 const app = Vue.createApp({
     data() {
         return {
@@ -6,29 +5,51 @@ const app = Vue.createApp({
             startFlag: false,
             stopTime: 0,
             stopFlag: false,
+            nextFlag: false,
             time: 0,
             timeText: '0:00',
             bluePoint: 0,
-            yellowPoint: 0
+            yellowPoint: 0,
+            gameMode: [
+                '準備',
+                '前半',
+                'ハーフタイム',
+                '後半',
+            ],
+            gameModeNum: 0,
+            humbergerMenu: false
         }
     },
     methods: {
         start() {
-            if (!this.startFlag) {
-                this.startTime = date.getTime()
-            }
+            const startBtn = document.querySelector('.start')
             if (this.stopFlag) {
-                this.startTime = new Date().getTime() - this.stopTime
                 this.stopFlag = false
+                this.startTime = new Date().getTime()
+                this.startFlag = true
+            }else if (!this.startFlag) {
+                this.startTime = new Date().getTime()
+                this.time = 0
+                this.gameModeNum++
+                this.gameModeNum = this.gameModeNum % this.gameMode.length
+                this.startFlag = true
+                if (this.gameModeNum == 0) {
+                    this.startFlag = false
+                }
             }
-            this.startFlag = true
         },
         draw() {
             if (this.startFlag) {
-                time = Math.floor((new Date().getTime() - this.startTime) / 1000)
-                sec = 60 - time % 60
-                min = 4 - Math.floor(time / 60)
-                this.timeText = `${min}:${sec}`
+                this.time = this.time + new Date().getTime() - this.startTime
+                this.startTime = new Date().getTime()
+                const timeDisplay = Math.floor(this.time / 1000)
+                sec = 59 - timeDisplay % 60
+                min = 4 - Math.floor(timeDisplay / 60)
+                this.timeText = `${min}:${('00' + String(sec)).slice(-2)}`
+                if (min <= 0 && sec <= 0) {
+                    this.nextFlag = true
+                    this.startFlag = false
+                }
             }
         },
         stop() {
@@ -36,6 +57,32 @@ const app = Vue.createApp({
                 this.stopTime = new Date().getTime()
                 this.startFlag = false
                 this.stopFlag = true
+            }
+        },
+        reset() {
+            this.startTime = 0
+            this.startFlag = false
+            this.stopTime = 0
+            this.stopFlag = false
+            this.time = 0
+            this.timeText = '0:00'
+            this.bluePoint = 0
+            this.yellowPoint = 0
+            this.gameModeNum = 0
+        },
+        humberger() {
+            const hum = document.querySelector('.humberger')
+            const menu = document.querySelector('.menu')
+            const cover = document.querySelector('.cover')
+            this.humbergerMenu = !this.humbergerMenu
+            if (this.humbergerMenu) {
+                hum.classList.add('active')
+                cover.classList.add('active')
+                menu.style.left = '0'
+            } else {
+                hum.classList.remove('active')
+                cover.classList.remove('active')
+                menu.style.left = '-50vw'
             }
         },
         blueUp() {

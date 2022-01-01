@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +7,102 @@
 
 body {
     background: #e9e7e7;
+    user-select: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.humberger {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    background: white;
+    border: 2px solid black;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+}
+
+.humberger>span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: black;
+    transform: translate(-50%);
+    left: 50%;
+    transition: .3s;
+}
+
+
+.humberger>span:nth-child(1) {
+    position: absolute;
+    top: 10px;
+}
+
+.humberger.active>span:nth-child(1) {
+    top: calc(50% - 1.5px);
+    transform: translate(-50%) rotate(45deg);
+}
+
+.humberger>span:nth-child(2) {
+    position: absolute;
+    top: calc(50% - 1.5px);
+}
+
+.humberger.active>span:nth-child(2) {
+    opacity: 0;
+}
+
+
+.humberger>span:nth-child(3) {
+    position: absolute;
+    bottom: 10px;
+}
+
+.humberger.active>span:nth-child(3) {
+    top: calc(50% - 1.5px);
+    transform: translate(-50%) rotate(-45deg);
+}
+
+.menu {
+    position: fixed;
+    left: -400px;
+    top: 0;
+    transition: .3s;
+    width: 300px;
+    height: 100%;
+    background: white;
+    z-index: 800;
+}
+
+.menu h3 {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2.5rem;
+}
+
+.menu>div {
+    margin-left: 30px;
+}
+
+.menu>div:nth-child(2) {
+    margin-top: 100px;
+}
+
+
+.cover {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 500;
+    background: #0000005f;
+}
+
+.cover.active {
+    width: 100%;
+    height: 100%;
 }
 
 .time {
@@ -35,6 +133,7 @@ body {
 
 .team>div {
     padding: 30px;
+    width: 50%;
 }
 
 .blue {
@@ -45,17 +144,45 @@ body {
     background: #f1ff27;
 }
 
-.menu {
+.gameMenu {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-bottom: 5px;
 }
 
-.menu>div {
+.gameMenu>div {
     padding: 5px 20px;
     text-align: center;
     background: white;
-    box-shadow: 2px 2px 3px black;
+    box-shadow: 2px 4px 2px black;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 2px solid #5b5b5b;
+    transition: top left .3s;
+}
+
+.gameMenu>div:hover {
+    background: #c2c2c212;
+}
+
+.gameMenu>div:active {
+    position: relative;
+    top: 4px;
+    left: 2px;
+    background: rgba(255, 166, 0, 0.563);
+    box-shadow: 0px 0px 2px black;
+}
+
+.gameMenu>div.active {
+    position: relative;
+    top: 4px;
+    left: 2px;
+    background: rgba(255, 166, 0, 0.563);
+    box-shadow: 0px 0px 2px black;
+}
+
+.gameMenu>div.next {
+    margin-left: 50px;
 }
 
 .team {
@@ -63,6 +190,7 @@ body {
     justify-content: space-around;
     align-items: center;
 }
+
 
 .name {
     text-align: center;
@@ -72,7 +200,7 @@ body {
     font-size: 4rem;
     width: 90%;
     text-align: center;
-    background: #ffffff;
+    background: #ffffff00;
     border: none;
     color: black;
     font-weight: bold;
@@ -89,7 +217,7 @@ body {
 
 .point h2 {
     color: white;
-    text-shadow: 3px 3px 7px black;
+    text-shadow: 4px 4px 15px black;
 }
 
 .point>div {
@@ -103,8 +231,20 @@ body {
 .down {
     padding: 10px;
     cursor: pointer;
+    text-align: center;
     background: white;
-    box-shadow: 2px 2px 5px black;
+    box-shadow: 2px 4px 2px black;
+    cursor: pointer;
+    border: 2px solid #5b5b5b;
+}
+
+.up:active,
+.down:active {
+    position: relative;
+    top: 4px;
+    left: 2px;
+    background: rgb(255, 166, 0);
+    box-shadow: 0px 0px 2px black;
 }
 
 .up {

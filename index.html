@@ -8,16 +8,34 @@
     <title>Document</title>
 </head>
 <body id="app">
+    <div class="humberger" @click="humberger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="menu">
+        <h3>設定</h3>
+        <div>
+            <p>試合時間(分)</p>
+            <input type="number" value="5" min="0">
+        </div>
+        <div>
+            <p>ハーフタイム(分)</p>
+            <input type="number" value="5" min="0">
+        </div>
+    </div>
+    <div class="cover" @click="humberger"></div>
     <div class="time">
         <div>
             <h1>{{timeText}}</h1>
-            <h2>準備</h2>
+            <h2>{{gameMode[gameModeNum]}}</h2>
         </div>
     </div>
-    <div class="menu">
-        <div @click='start'>start</div>
-        <div @click='stop'>stop</div>
-        <div>reset</div>
+    <div class="gameMenu">
+        <div class="start" @click='start'>start</div>
+        <div class="stop" @click='stop'>stop</div>
+        <div class="reset" @click='reset'>reset</div>
+        <!-- <div class="next" @click='next'>next</div> -->
     </div>
     <div class="team">
         <div class="blue">
