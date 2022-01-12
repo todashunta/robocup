@@ -19,7 +19,7 @@ const app = Vue.createApp({
             gameModeNum: 0,
             gameModeFlag: true,
             humbergerMenu: false,
-            nextFlag: false
+            nextFlag: false,
         }
     },
     methods: {
