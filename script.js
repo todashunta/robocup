@@ -17,7 +17,9 @@ const app = Vue.createApp({
                 '後半',
             ],
             gameModeNum: 0,
-            humbergerMenu: false
+            gameModeFlag: true,
+            humbergerMenu: false,
+            nextFlag: false
         }
     },
     methods: {
@@ -27,7 +29,7 @@ const app = Vue.createApp({
                 this.stopFlag = false
                 this.startTime = new Date().getTime()
                 this.startFlag = true
-            }else if (!this.startFlag) {
+            }else if (!this.startFlag && this.gameModeNum <= 0) {
                 this.startTime = new Date().getTime()
                 this.time = 0
                 this.gameModeNum++
@@ -39,16 +41,26 @@ const app = Vue.createApp({
             }
         },
         draw() {
+            const gameTime = document.getElementById('gameTime')
+            const halfTime = document.getElementById('halfTime')
             if (this.startFlag) {
                 this.time = this.time + new Date().getTime() - this.startTime
                 this.startTime = new Date().getTime()
                 const timeDisplay = Math.floor(this.time / 1000)
                 sec = 59 - timeDisplay % 60
-                min = 4 - Math.floor(timeDisplay / 60)
+                if (this.gameMode[this.gameModeNum] != 'ハーフタイム') {
+                    min = (gameTime.value - 1) - Math.floor(timeDisplay / 60)
+                } else {
+                    min = (halfTime.value - 1) - Math.floor(timeDisplay / 60)
+                }
                 this.timeText = `${min}:${('00' + String(sec)).slice(-2)}`
                 if (min <= 0 && sec <= 0) {
                     this.nextFlag = true
                     this.startFlag = false
+                    this.timeText = this.gameMode[this.gameModeNum] + '終了'
+                    this.gameModeFlag = false
+                    const h1 = document.querySelector('.time > div > h1')
+                    h1.style.fontSize = "7rem"
                 }
             }
         },
@@ -69,6 +81,22 @@ const app = Vue.createApp({
             this.bluePoint = 0
             this.yellowPoint = 0
             this.gameModeNum = 0
+        },
+        next() {
+            const h1 = document.querySelector('.time > div > h1')
+            if (!this.startFlag) {
+                this.startTime = new Date().getTime()
+                this.time = 0
+                this.gameModeNum++
+                this.gameModeNum = this.gameModeNum % this.gameMode.length
+                this.startFlag = true
+                this.gameModeFlag = true
+                this.nextFlag = false
+                h1.style.fontSize = "10rem"
+                if (this.gameModeNum == 0) {
+                    this.reset()
+                }
+            }
         },
         humberger() {
             const hum = document.querySelector('.humberger')

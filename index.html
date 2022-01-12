@@ -17,25 +17,25 @@
         <h3>設定</h3>
         <div>
             <p>試合時間(分)</p>
-            <input type="number" value="5" min="0">
+            <input type="number" value="5" min="0" id="gameTime">
         </div>
         <div>
             <p>ハーフタイム(分)</p>
-            <input type="number" value="5" min="0">
+            <input type="number" value="5" min="0" id="halfTime">
         </div>
     </div>
     <div class="cover" @click="humberger"></div>
     <div class="time">
         <div>
             <h1>{{timeText}}</h1>
-            <h2>{{gameMode[gameModeNum]}}</h2>
+            <h2 v-if="gameModeFlag">{{gameMode[gameModeNum]}}</h2>
         </div>
     </div>
     <div class="gameMenu">
         <div class="start" @click='start'>start</div>
         <div class="stop" @click='stop'>stop</div>
         <div class="reset" @click='reset'>reset</div>
-        <!-- <div class="next" @click='next'>next</div> -->
+        <div class="next" @click='next' v-if="nextFlag">next</div>
     </div>
     <div class="team">
         <div class="blue">
