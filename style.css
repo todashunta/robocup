@@ -121,10 +121,10 @@ body {
     display: inline-block;
 }
 
-.time h2 {
+.time>div>h2 {
     position: absolute;
     top: 20px;
-    left: -50px;
+    transform: translate(-100%);
 }
 
 .team {
