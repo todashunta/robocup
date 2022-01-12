@@ -110,7 +110,7 @@ const app = Vue.createApp({
             } else {
                 hum.classList.remove('active')
                 cover.classList.remove('active')
-                menu.style.left = '-50vw'
+                menu.style.left = '-300px'
             }
         },
         blueUp() {
